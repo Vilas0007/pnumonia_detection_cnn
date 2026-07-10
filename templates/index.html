@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Pneumonia Detection</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+text-align:center;
+background:#f2f2f2;
+
+}
+
+.container{
+
+width:500px;
+margin:auto;
+margin-top:40px;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+
+}
+
+img{
+
+margin-top:20px;
+width:300px;
+
+}
+
+button{
+
+padding:10px 20px;
+font-size:18px;
+background:green;
+color:white;
+border:none;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Pneumonia Detection</h1>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" required>
+
+<br><br>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction %}
+
+<h2>Prediction : {{ prediction }}</h2>
+
+<h3>Confidence : {{ confidence }}%</h3>
+
+<img src="{{ url_for('static',filename='uploads/'+image) }}">
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
